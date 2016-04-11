@@ -13,29 +13,24 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
+	<jdbc:embedded-database type="HSQL" id="dataSource" />
 
-	<context:component-scan base-package="myapp.sudarshan">
-		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
-	</context:component-scan>
+	<bean
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
+		id="emf">
 
-	<tx:annotation-driven transaction-manager="transactionManager" />
-
-	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="packagesToScan" value="myapp.sudarshan.entity" />
 		<property name="dataSource" ref="dataSource" />
+		<property name="jpaProperties">
+			<props>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.hbm2ddl.auto">create</prop>
+			</props>
+		</property>
+		<property name="persistenceProvider">
+			<bean class="org.hibernate.jpa.HibernatePersistenceProvider" />
+		</property>
 	</bean>
 
-	<jpa:repositories base-package="myapp.sudarshan.repository" entity-manager-factory-ref="emf" />
-	
-	<import resource="spring-security.xml" />
-	
-	<task:annotation-driven />
-	
-	<beans profile="dev">
-		<import resource="database-dev.xml" />
-	</beans>
-	
-	<beans profile="prod">
-		<import resource="database-prod.xml" />
-	</beans>	
-	
+
 </beans>

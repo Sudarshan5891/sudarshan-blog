@@ -7,12 +7,12 @@
 		
 	<global-method-security pre-post-annotations="enabled" />	
 
-	<http>
+	<http use-expressions="true">
 		<intercept-url pattern="/users**" access="hasRole('ROLE_ADMIN')" />
 		<intercept-url pattern="/users/**" access="hasRole('ROLE_ADMIN')" />
 		<intercept-url pattern="/account**" access="hasRole('ROLE_USER')" />
 					
-		<csrf disabled="true" />
+		<!-- <csrf disabled="true" /> -->
 		<form-login login-page="/login.htm" />
 		<logout logout-url="/logout" />
 		
@@ -27,11 +27,11 @@
 		<password-encoder hash="bcrypt" base64="true" />
 		
 		<jdbc-user-service data-source-ref="dataSource"
-			authorities-by-username-query="SELECT USER.NAME, ROLE.NAME FROM USER JOIN
-										  USER_ROLE ON USER.ID = USER_ROLE.USERS_ID JOIN 
-										  ROLE ON USER_ROLE.ROLES_ID = ROLE.ID 
-										  WHERE USER.NAME = ?"
-		    users-by-username-query="SELECT NAME, PASSWORD, ENABLED FROM USER WHERE NAME =?"			
+			authorities-by-username-query="SELECT USER.NAME, ROLE.NAME FROM APP_USER JOIN
+										  APP_USER_ROLE ON APP_USER.ID = APP_USER_ROLE.USERS_ID JOIN 
+										  ROLE ON APP_USER_ROLE.ROLES_ID = ROLE.ID 
+										  WHERE APP_USER.NAME = ?"
+		    users-by-username-query="SELECT NAME, PASSWORD, ENABLED FROM APP_USER WHERE NAME =?"			
 		/>
 		
 		<!-- Not used typically
