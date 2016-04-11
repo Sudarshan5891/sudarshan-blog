@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+       
+	<tiles-definitions>
+	
+		<definition name="commons" template="/WEB-INF/layouts/classic.jsp">
+			<put-attribute name="title" value="Sudarshan's Blog" />
+			<put-attribute name="footer" value="/WEB-INF/layouts/footer.jsp" />
+		</definition>
+		
+		<definition name="index"  extends="commons">
+			<put-attribute name="title" value="Sudarshan's Blog Home Page" />
+			<put-attribute name="body" value="/WEB-INF/jsp/index.jsp" />
+			<put-attribute name="current" value="index"/>
+		</definition>		
+		
+		<definition name="users" extends="commons">
+			<put-attribute name="title" value="Sudarshan's Blog Users Page" />
+			<put-attribute name="body" value="/WEB-INF/jsp/users.jsp" />
+			<put-attribute name="current" value="users" />
+		</definition>	
+		
+		<definition name="user-detail" extends="commons">
+			<put-attribute name="title" value="Sudarshan's Blog Users Details Page" />
+			<put-attribute name="body" value="/WEB-INF/jsp/user-detail.jsp" />
+			<put-attribute name="current" value="users" />
+		</definition>		
+		
+		<definition name="account-detail" extends="commons">
+			<put-attribute name="title" value="Sudarshan's Blog Account Details Page" />
+			<put-attribute name="body" value="/WEB-INF/jsp/user-account.jsp" />
+			<put-attribute name="current" value="accounts" />
+		</definition>						
+
+		<definition name="user-register" extends="commons">
+			<put-attribute name="title" value="Sudarshan's Blog Register Page" />
+			<put-attribute name="body" value="/WEB-INF/jsp/user-register.jsp" />
+			<put-attribute name="current" value="register" />
+		</definition>	
+		
+		<definition name="login" extends="commons">
+			<put-attribute name="title" value="Sudarshan's Blog Login Page" />
+			<put-attribute name="body" value="/WEB-INF/jsp/user-login.jsp" />
+			<put-attribute name="current" value="login" />
+		</definition>			
+	</tiles-definitions>

@@ -1,0 +1,46 @@
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/security
+		http://www.springframework.org/schema/security/spring-security.xsd">
+		
+	<global-method-security pre-post-annotations="enabled" />	
+
+	<http>
+		<intercept-url pattern="/users**" access="hasRole('ROLE_ADMIN')" />
+		<intercept-url pattern="/users/**" access="hasRole('ROLE_ADMIN')" />
+		<intercept-url pattern="/account**" access="hasRole('ROLE_USER')" />
+					
+		<csrf disabled="true" />
+		<form-login login-page="/login.htm" />
+		<logout logout-url="/logout" />
+		
+		<session-management>
+			<concurrency-control max-sessions="1" expired-url="/logout" />
+		</session-management>
+	</http>
+
+	<authentication-manager>
+		<authentication-provider>
+		
+		<password-encoder hash="bcrypt" base64="true" />
+		
+		<jdbc-user-service data-source-ref="dataSource"
+			authorities-by-username-query="SELECT USER.NAME, ROLE.NAME FROM USER JOIN
+										  USER_ROLE ON USER.ID = USER_ROLE.USERS_ID JOIN 
+										  ROLE ON USER_ROLE.ROLES_ID = ROLE.ID 
+										  WHERE USER.NAME = ?"
+		    users-by-username-query="SELECT NAME, PASSWORD, ENABLED FROM USER WHERE NAME =?"			
+		/>
+		
+		<!-- Not used typically
+			<user-service>
+				<user name="admin" password="admin" authorities="ROLE_USER, ROLE_ADMIN" />
+			</user-service>
+		 -->
+		 
+		</authentication-provider>
+	</authentication-manager>
+
+</beans:beans>
