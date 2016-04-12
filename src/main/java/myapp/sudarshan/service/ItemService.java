@@ -22,5 +22,9 @@ public class ItemService {
 	public List<Item> getItems() {
 		return itemRepository.findAll(new PageRequest(0, 10, Direction.DESC, "publishedDate")).getContent();
 	}
+	
+	public List<Item> getItems(int page) {
+		return itemRepository.findAll(new PageRequest(page, 10, Direction.DESC, "publishedDate")).getContent();
+	}	
 
 }

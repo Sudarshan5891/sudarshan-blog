@@ -15,8 +15,11 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.15.0/jquery.validate.min.js"> </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.3.1/jquery.twbsPagination.min.js"></script>
 
 <title><tiles:getAsString name="title" /></title>
+
+
 </head>
 
 <body>
@@ -58,7 +61,7 @@
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 					<security:authorize access="isAuthenticated()">
-						<li><a href="<spring:url value="/logout"/>">LogOut</a></li>
+						<li><a href="<spring:url value="/logout.htm"/>">LogOut</a></li>
 					</security:authorize>
 					</ul>
 				</div>

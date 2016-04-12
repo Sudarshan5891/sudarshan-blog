@@ -1,6 +1,7 @@
 package myapp.sudarshan.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import myapp.sudarshan.service.UserService;
 
 @Controller
+@Scope("session")
 @RequestMapping("/users")
 public class AdminController {
 	

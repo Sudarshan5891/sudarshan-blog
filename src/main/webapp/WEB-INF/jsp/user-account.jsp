@@ -63,7 +63,7 @@
 
 					<div class="form-group">
 
-						<label for="name" class="col-sm-2 control-label">Url</label>
+						<label for="name" class="col-sm-2 control-label">RSS Feed</label>
 
 						<div class="col-sm-10">
 							<form:input path="url" cssClass="form-control" />

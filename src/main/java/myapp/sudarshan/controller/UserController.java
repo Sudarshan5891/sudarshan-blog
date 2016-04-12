@@ -23,7 +23,7 @@ import myapp.sudarshan.service.BlogService;
 import myapp.sudarshan.service.UserService;
 
 @Controller
-@Scope("request")
+@Scope("session")
 public class UserController {
 
 	@Autowired

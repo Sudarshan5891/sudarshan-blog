@@ -7,7 +7,7 @@
 	<strong>Stay Tuned For News Feed</strong>, refreshes as we get any new updates.
 </div>
 
-<table class="table table-bordered table-hover table-striped">
+<table class="table table-bordered table-hover table-striped indexPage">
 	<thead>
 		<tr>
 			<th>Date</th>
@@ -30,3 +30,44 @@
 		</c:forEach>
 	</tbody>
 </table>
+
+<ul id="pagination" class="pagination pagination-sm"></ul>
+           
+<!-- 
+<script type="text/javascript">
+$(document).ready(function(){	
+	$("#pagination").twbsPagination({
+		totalPages : 50,
+		visiblePages : 5,
+		onPageClick : function(event, page) {
+			setPage(page) //$(".indexPage").append('Page ' + page);
+		}
+	});
+})
+
+
+	function setPage(currentPage) {
+		var param = {};
+		param.currentPage = currentPage;
+		param.limitPage = 5;
+		
+		$('.indexPage tbody').empty();
+
+		for (var i = 0; i < 2; i++) {
+
+			var tr = "<tr><td>" + "hjbj" + " </td>  <td>"
+					+ "jnk" + " </td>  <td>" + "jnk"
+					+ " </td>  <td>" + "jnk" + " </td>  <td>"
+					+ "jnk" + " </td>  <td>"
+					+ "jnk" + " </td>";
+
+			$(".indexPage tbody").append(tr);
+
+		}		
+
+		
+
+	}
+</script>
+
+ -->

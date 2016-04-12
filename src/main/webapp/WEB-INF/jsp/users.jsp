@@ -4,18 +4,51 @@
 <%@ include file="../layouts/taglibs.jsp" %>
 
 <script type="text/javascript">
+//var recall = true;
+function loadDialog() { 
+        var sessionAlive = ${pageContext.session.maxInactiveInterval};          
+        var notifyBefore = 30; // Give client 15 seconds to choose.
+        setTimeout(function() {       
+            $(function() {
+                $( "#dialog" ).dialog({
+                    autoOpen: true,
+                    maxWidth:400,
+                    maxHeight: 200,
+                    width: 400,
+                    height: 200,
+                    modal: true,
+                    open: function(event, ui) {
+                        setTimeout(function(){
+                            $('#dialog').dialog('close'); 
+                        }, notifyBefore * 1000);
+                    },
+                    buttons: {
+                    "Yes": function() {  
+                         $.get("/about", function(data,status){
+                           // alert("Data: " + data + "\nStatus: " + status);
+                          });                             
+                        $('#dialog').dialog("close");
+                        loadDialog();
+                    },
+                    "No": function() {  
+                        $('#dialog').dialog("close");
+                    }
+                   },
+                   close: function() {}
+                });
+              });
+        }, (sessionAlive - notifyBefore) * 1000);
+};
 
-	$(document).ready(function() {
-		
-		$(".triggerRemove").click(function(e) {
-			e.preventDefault();
-			
-			$("#modalRemove .removeBtn").attr("href", $(this).attr("href"));
-			$("#modalRemove").modal();
-		})
-	})
+loadDialog(); 
 
 </script>
+
+<div id="dialog" title="Session Timeout Info" style="display:none">
+  <p>
+    Your session will be timeout within 30 seconds. Do you want to continue session?  
+  </p>
+</div>
 
 <table class="table table-bordered table-hover table-striped">
 	<thead>

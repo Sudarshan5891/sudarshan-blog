@@ -5,7 +5,7 @@
        
 	<tiles-definitions>
 	
-		<definition name="commons" template="WEB-INF/layouts/classic.jsp">
+		<definition name="commons" template="/WEB-INF/layouts/classic.jsp">
 			<put-attribute name="title" value="Sudarshan's Blog" />
 			<put-attribute name="footer" value="/WEB-INF/layouts/footer.jsp" />
 		</definition>

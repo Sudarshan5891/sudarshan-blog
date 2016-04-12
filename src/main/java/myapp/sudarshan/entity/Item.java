@@ -26,7 +26,8 @@ public class Item {
 	private String title;
 	
 	@Lob
-	@Type(type = "org.hibernate.type.StringType")// new version 5 <="org.hibernate.type.StringClobType")=> old hib version 4
+	@Type(type = "org.hibernate.type.StringClobType")
+	@Column(length = Integer.MAX_VALUE)// rg.hibernate.type.StringType new version 5 <="org.hibernate.type.StringClobType")=> old hib version 4
 	private String description; //@Embedded annotation will embed the address attributes in same table.
 
 	@Column(name = "published_date")
